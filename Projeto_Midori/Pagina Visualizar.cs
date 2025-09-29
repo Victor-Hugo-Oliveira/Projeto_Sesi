@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Office.Interop.Excel;
-using System.Data.OleDb;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace Projeto_Midori {
@@ -17,6 +18,7 @@ namespace Projeto_Midori {
             InitializeComponent();
             Pagina_Visualizar_Load();
         }
+        string caminho = CaminhoInic.Caminho.Text;
 
         private void homeButton_Click(object sender, EventArgs e) {
             FrontPage frontPage = new FrontPage();
@@ -26,10 +28,7 @@ namespace Projeto_Midori {
         }
 
         private void Pagina_Visualizar_Load() {
-            string filepath = "";
-            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-            Workbook wb;
-            Worksheet ws;
+            
             string connStr = $"Provider=Microsoft.ACE.OLEDB.12.0; Data Source='C:\\Users\\Bone\\Documents\\Planilhas\\teste_Midori\\OSASCO_Teste.xlsx';Extended Properties='Excel 12.0;HDR=YES'";
 
             using (OleDbConnection conn = new OleDbConnection(connStr)) {
@@ -44,10 +43,22 @@ namespace Projeto_Midori {
 
                 visualizarDataGrid.DataSource = dt;
             }
-            /*wb = excel.Workbooks.Open("C:\\Users\\Bone\\Documents\\Planilhas\\teste_Midori\\OSASCO - Planilha PSDA 455-24 - Lote 02.xlsx");
-            ws = wb.Worksheets[1];
+            string data;
+            try {
+                StreamReader streamReaderOrdSer = new StreamReader(caminho + "\\Ordem de Servico.txt");
 
-            visualizarDataGrid.DataSource = ws;*/
+                data = streamReaderOrdSer.ReadLine();
+
+                while (data != null) {
+                    visualizarOrdServDD.Items.Add(data);
+                    data = streamReaderOrdSer.ReadLine();
+                }
+            }
+            catch (FileNotFoundException ex) {
+
+                MessageBox.Show("Ordem de Servico nao cadastrado");
+
+            }
 
         }
 

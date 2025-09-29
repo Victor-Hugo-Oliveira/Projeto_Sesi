@@ -52,14 +52,26 @@ namespace Projeto_Midori {
             MessageBox.Show(nomeCadastro);
 
             string caminho = CaminhoInic.Caminho.Text;
-            
-            
-            
-            StreamWriter streamWriter = new StreamWriter(caminho + "\\Teste.txt", true);
-            
 
-            streamWriter.WriteLine(nomeCadastro);
-            streamWriter.Close();
+            if (cadastrarCat.Checked) {
+                StreamWriter streamWriter = new StreamWriter(caminho + "\\Cadastro.txt", true);
+                streamWriter.WriteLine(nomeCadastro);
+                streamWriter.Close();
+            }
+
+            if (cadastrarAmb.Checked) {
+                StreamWriter streamWriter = new StreamWriter(caminho + "\\Ambiente.txt", true);
+                streamWriter.WriteLine(nomeCadastro);
+                streamWriter.Close();
+            }
+
+            if (cadastrarOrdSer.Checked) {
+                StreamWriter streamWriter = new StreamWriter(caminho + "\\Ordem de Servico.txt", true);
+                streamWriter.WriteLine(nomeCadastro);
+                streamWriter.Close();
+            }
+
+
         }
     }
 }
