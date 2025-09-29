@@ -39,7 +39,7 @@ namespace Projeto_Midori {
                 // Load data
                 OleDbDataAdapter adapter = new OleDbDataAdapter($"SELECT * FROM [{sheet}]", conn);
                 System.Data.DataTable dt = new System.Data.DataTable();
-                adapter.Fill(dt); 
+                adapter.Fill(dt);
 
                 visualizarDataGrid.DataSource = dt;
             }
@@ -57,6 +57,7 @@ namespace Projeto_Midori {
             catch (FileNotFoundException ex) {
 
                 MessageBox.Show("Ordem de Servico nao cadastrado");
+
 
             }
 
