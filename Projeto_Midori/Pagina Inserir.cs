@@ -38,7 +38,7 @@ namespace Projeto_Midori {
 
             foreach (string Result in cell.Value) {
                 if (Result != null ){
-                    inserirItemDD.Items.Add(Result);
+                    inserirItemDD.Items.Add(Result); 
                 }
                 
             }
