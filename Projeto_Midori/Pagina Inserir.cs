@@ -33,12 +33,22 @@ namespace Projeto_Midori {
             wb = excel.Workbooks.Open(filePath);
             ws = wb.Worksheets[1];
 
-            Microsoft.Office.Interop.Excel.Range cell = ws.Range["B1:B350"];
+            Microsoft.Office.Interop.Excel.Range cell = ws.Range["B1:B5000"];
+            Microsoft.Office.Interop.Excel.Range codRange = ws.Range["A2:A5000"];
+
             foreach (string Result in cell.Value) {
-                if (Result != null){
+                if (Result != null ){
                     inserirItemDD.Items.Add(Result);
                 }
                 
+            }
+
+
+            object[,] cods = codRange.Value2 as object[,];
+            for (int i = 1; i < inserirItemDD.Items.Count; i++) {
+                string resultadoCod = cods.GetValue(i,1).ToString();
+                inserirItemDD.Items[i] = resultadoCod + " " + inserirItemDD.Items[i];
+                    
             }
             wb.Close();           
         }
