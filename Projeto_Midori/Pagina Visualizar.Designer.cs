@@ -30,30 +30,32 @@
             visualizarVoltar = new Button();
             homeButton = new Button();
             visualizarDataGrid = new DataGridView();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)visualizarDataGrid).BeginInit();
             SuspendLayout();
             // 
             // visualizarOrdServDD
             // 
+            visualizarOrdServDD.DropDownStyle = ComboBoxStyle.DropDownList;
             visualizarOrdServDD.FormattingEnabled = true;
-            visualizarOrdServDD.Location = new Point(36, 41);
+            visualizarOrdServDD.Location = new Point(51, 41);
             visualizarOrdServDD.Name = "visualizarOrdServDD";
-            visualizarOrdServDD.Size = new Size(391, 23);
+            visualizarOrdServDD.Size = new Size(414, 23);
             visualizarOrdServDD.TabIndex = 0;
-            visualizarOrdServDD.Text = "Selecione Ordem de Servico";
             // 
             // textBox1
             // 
             textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(433, 44);
+            textBox1.Location = new Point(471, 44);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(100, 16);
+            textBox1.Size = new Size(62, 16);
             textBox1.TabIndex = 1;
             textBox1.Text = "Filtrar por:";
             // 
             // comboBox2
             // 
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Point(539, 41);
             comboBox2.Name = "comboBox2";
@@ -89,13 +91,22 @@
             visualizarDataGrid.ReadOnly = true;
             visualizarDataGrid.Size = new Size(729, 321);
             visualizarDataGrid.TabIndex = 9;
-            
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(51, 19);
+            label1.Name = "label1";
+            label1.Size = new Size(163, 15);
+            label1.TabIndex = 10;
+            label1.Text = "Selecione a Ordem de Servico";
             // 
             // Pagina_Visualizar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(visualizarDataGrid);
             Controls.Add(homeButton);
             Controls.Add(visualizarVoltar);
@@ -117,5 +128,6 @@
         private Button visualizarVoltar;
         private Button homeButton;
         private DataGridView visualizarDataGrid;
+        private Label label1;
     }
 }

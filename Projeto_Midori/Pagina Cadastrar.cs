@@ -54,7 +54,7 @@ namespace Projeto_Midori {
             string caminho = CaminhoInic.Caminho.Text;
 
             if (cadastrarCat.Checked) {
-                StreamWriter streamWriter = new StreamWriter(caminho + "\\Cadastro.txt", true);
+                StreamWriter streamWriter = new StreamWriter(caminho + "\\Categoria.txt", true);
                 streamWriter.WriteLine(nomeCadastro);
                 streamWriter.Close();
             }

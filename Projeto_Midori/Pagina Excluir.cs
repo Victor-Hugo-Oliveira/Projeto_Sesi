@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace Projeto_Midori {
     public partial class Pagina_Excluir : Form {
+
+        
         public Pagina_Excluir() {
             InitializeComponent();
         }
