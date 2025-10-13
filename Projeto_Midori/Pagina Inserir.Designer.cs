@@ -51,7 +51,7 @@
             inserirItemDD.Size = new Size(678, 23);
             inserirItemDD.TabIndex = 0;
             inserirItemDD.SelectedIndexChanged += inserirItemDD_SelectedIndexChanged;
-            inserirItemDD.TextUpdate += inserirItemDD_TextUpdate;
+            
             // 
             // inserirAmbDD
             // 
@@ -89,6 +89,7 @@
             // 
             // inserirOBSTXT
             // 
+            inserirOBSTXT.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             inserirOBSTXT.Location = new Point(53, 158);
             inserirOBSTXT.Name = "inserirOBSTXT";
             inserirOBSTXT.Size = new Size(678, 236);
@@ -112,6 +113,7 @@
             inserirConfirmar.TabIndex = 7;
             inserirConfirmar.Text = "Confirmar";
             inserirConfirmar.UseVisualStyleBackColor = true;
+            inserirConfirmar.Click += inserirConfirmar_Click;
             // 
             // inserirUN
             // 
