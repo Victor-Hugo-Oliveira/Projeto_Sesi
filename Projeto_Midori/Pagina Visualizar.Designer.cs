@@ -114,6 +114,7 @@
             Controls.Add(textBox1);
             Controls.Add(visualizarOrdServDD);
             Name = "Pagina_Visualizar";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pagina_Visualizar";
             ((System.ComponentModel.ISupportInitialize)visualizarDataGrid).EndInit();
             ResumeLayout(false);

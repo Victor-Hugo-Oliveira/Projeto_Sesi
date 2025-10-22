@@ -79,6 +79,7 @@
             Controls.Add(InserirButton);
             Controls.Add(CadastrarButton);
             Name = "FrontPage";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pagina Inicial";
             ResumeLayout(false);
         }

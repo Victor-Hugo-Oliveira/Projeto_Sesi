@@ -14,8 +14,8 @@ namespace Projeto_Midori {
     
     public partial class Pagina_Inserir : Form {
 
-        public static Workbook wb;
-        public static Worksheet ws;
+        public static Workbook? wb;
+        public static Worksheet? ws;
         Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
         string filePath = "C:\\Users\\Bone\\Documents\\Planilhas\\teste_Midori\\OSASCO_Teste.xlsx";
         string caminho = CaminhoInic.Caminho.Text;
@@ -55,7 +55,7 @@ namespace Projeto_Midori {
 
 
 
-            object[,] cods = codRange.Value2 as object[,];
+            object[,]? cods = codRange.Value2 as object[,];
             for (int i = 1; i < inserirItemDD.Items.Count; i++) {
                 string resultadoCod = cods.GetValue(i, 1).ToString();
                 inserirItemDD.Items[i] = resultadoCod + " " + inserirItemDD.Items[i];
@@ -63,24 +63,24 @@ namespace Projeto_Midori {
             }
 
 
-
+            MessageBox.Show(inserirItemDD.Items.Count.ToString());
             wb.Close();
         }
 
         // Carrega os items de Categoria/Ambiente/Ordem de Servico
         private void Pagina_inserir_LoadSub() { 
-            string data;
+            string? data;
             try {
-                StreamReader streamReaderCad = new StreamReader(caminho + "\\Categoria.txt");
+                StreamReader streamReaderCat = new StreamReader(caminho + "\\Categoria.txt");
 
-                data = streamReaderCad.ReadLine();
+                data = streamReaderCat.ReadLine();
 
                 while (data != null) {
                     inserirCatDD.Items.Add(data);
-                    data = streamReaderCad.ReadLine();
+                    data = streamReaderCat.ReadLine();
                 }
 
-                streamReaderCad.Close();
+                streamReaderCat.Close();
             }
             catch (FileNotFoundException ex) {
                 MessageBox.Show("Categoria nao cadastrado");
@@ -114,7 +114,7 @@ namespace Projeto_Midori {
 
                 streamReaderOrdSer.Close();
             }
-            catch (FileNotFoundException ex) {
+            catch (FileNotFoundException ) {
 
                 MessageBox.Show("Ordem de Servico nao cadastrado");
 
@@ -122,14 +122,18 @@ namespace Projeto_Midori {
         }
 
         // Remove duplicatas
-        private void RemoverDuplicatas(ComboBox comboBox) { 
+        private void RemoverDuplicatas(ComboBox comboBox) {
             var unique = new HashSet<string>();
-            for (int i = comboBox.Items.Count - 1; i >= 0; i--) {
-                string value = comboBox.Items[i].ToString();
-                if (!unique.Add(value)) {
-                    comboBox.Items.RemoveAt(i);
-                }
+            var newList = new List<string>();
+
+            foreach (var item in comboBox.Items) {
+                string value = item.ToString();
+                if (unique.Add(value))
+                    newList.Add(value);
             }
+
+            comboBox.Items.Clear();
+            comboBox.Items.AddRange(newList.ToArray());
         }
 
 
@@ -155,6 +159,8 @@ namespace Projeto_Midori {
             wb = excel.Workbooks.Open(filePath);
             ws = excel.Worksheets[1];
 
+            Microsoft.Office.Interop.Excel.Range UnRange = ws.Range["D1:D5000"];
+            Microsoft.Office.Interop.Excel.Range CodRange = ws.Range["A1:A5000"];
             Microsoft.Office.Interop.Excel.Range ItemRange = ws.Range["B1:B5000"];
             Microsoft.Office.Interop.Excel.Range QuantRange = ws.Range["C1:C5000"];
             Microsoft.Office.Interop.Excel.Range AmbRange = ws.Range["E1:E5000"];
@@ -168,24 +174,40 @@ namespace Projeto_Midori {
             String[] inserir = {inserirItemDD.SelectedItem.ToString(), inserirQuantTXT.Text, inserirAmbDD.SelectedItem.ToString(), inserirCatDD.SelectedItem.ToString(), inserirOrdServDD.SelectedItem.ToString(), inserirOBSTXT.Text };
 
 
-            if (QuantRange.Cells[curIndex + 1, 1] != null) {
+            if (QuantRange.Value2[curIndex + 1, 1] != null) {
                 int countIndx = 0;
                 foreach (string check in ItemRange.Value) {
-                    countIndx++;
+                    
                     if (check == null) {
                         curIndex = countIndx;
+                        CodRange.Cells[curIndex + 1, 1].Value2 = CodRange.Cells[inserirItemDD.SelectedIndex + 1, 1];
+                        ItemRange.Cells[curIndex + 1, 1].Value2 = ItemRange.Cells[inserirItemDD.SelectedIndex + 1, 1];
+                        UnRange.Cells[curIndex + 1, 1].Value2 = UnRange.Cells[inserirItemDD.SelectedIndex + 1, 1];
+                        AmbRange.Cells[curIndex + 1, 1].Value2 = inserir[2];
+                        QuantRange.Cells[curIndex + 1, 1].Value2 = inserir[1];
+                        CatRange.Cells[curIndex + 1, 1].Value2 = inserir[3];
+                        OrdServRange.Cells[curIndex + 1, 1].Value2 = inserir[4];
+                        ObsRange.Cells[curIndex + 1, 1].Value2 = inserir[5];
+
+
+
                         break;
                     }
-                    
+                    countIndx++;
                 }
 
-            } 
+            } else {
+                curIndex = inserirItemDD.SelectedIndex;
 
                 AmbRange.Cells[curIndex + 1, 1].Value2 = inserir[2];
                 QuantRange.Cells[curIndex + 1, 1].Value2 = inserir[1];
                 CatRange.Cells[curIndex + 1, 1].Value2 = inserir[3];
                 OrdServRange.Cells[curIndex + 1, 1].Value2 = inserir[4];
-                ObsRange.Cells[curIndex + 1, 1].Value2 = inserir[5];
+                ObsRange.Cells[curIndex + 1, 1].Value2 = inserir[5]; 
+
+            }
+
+                
 
             
 

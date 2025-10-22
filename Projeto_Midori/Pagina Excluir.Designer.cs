@@ -25,13 +25,13 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pagina_Excluir));
             excluirItemDD = new ComboBox();
-            excluirOrdemDD = new ComboBox();
             CancelExcluir = new Button();
             ConfirmarExcluir = new Button();
             homeButton = new Button();
             excluirCategoria = new RadioButton();
             excluirAmbiente = new RadioButton();
             excluirItem = new RadioButton();
+            excluirOrdServ = new RadioButton();
             SuspendLayout();
             // 
             // excluirItemDD
@@ -42,15 +42,6 @@
             excluirItemDD.Size = new Size(513, 23);
             excluirItemDD.TabIndex = 3;
             excluirItemDD.Text = "Selecione o item a ser excluido";
-            // 
-            // excluirOrdemDD
-            // 
-            excluirOrdemDD.FormattingEnabled = true;
-            excluirOrdemDD.Location = new Point(211, 97);
-            excluirOrdemDD.Name = "excluirOrdemDD";
-            excluirOrdemDD.Size = new Size(513, 23);
-            excluirOrdemDD.TabIndex = 4;
-            excluirOrdemDD.Text = "Selecione a Ordem de servico do item";
             // 
             // CancelExcluir
             // 
@@ -69,6 +60,7 @@
             ConfirmarExcluir.TabIndex = 6;
             ConfirmarExcluir.Text = "Confirmar";
             ConfirmarExcluir.UseVisualStyleBackColor = true;
+            ConfirmarExcluir.Click += ConfirmarExcluir_Click;
             // 
             // homeButton
             // 
@@ -90,6 +82,7 @@
             excluirCategoria.TabStop = true;
             excluirCategoria.Text = "Categoria";
             excluirCategoria.UseVisualStyleBackColor = true;
+            excluirCategoria.CheckedChanged += excluirCategoria_CheckedChanged;
             // 
             // excluirAmbiente
             // 
@@ -101,7 +94,7 @@
             excluirAmbiente.TabStop = true;
             excluirAmbiente.Text = "Ambiente";
             excluirAmbiente.UseVisualStyleBackColor = true;
-            excluirAmbiente.CheckedChanged += radioButton2_CheckedChanged;
+            excluirAmbiente.CheckedChanged += excluirAmbiente_CheckedChanged;
             // 
             // excluirItem
             // 
@@ -113,21 +106,35 @@
             excluirItem.TabStop = true;
             excluirItem.Text = "Item";
             excluirItem.UseVisualStyleBackColor = true;
+            excluirItem.CheckedChanged += excluirItem_CheckedChanged;
+            // 
+            // excluirOrdServ
+            // 
+            excluirOrdServ.AutoSize = true;
+            excluirOrdServ.Location = new Point(50, 187);
+            excluirOrdServ.Name = "excluirOrdServ";
+            excluirOrdServ.Size = new Size(120, 19);
+            excluirOrdServ.TabIndex = 11;
+            excluirOrdServ.TabStop = true;
+            excluirOrdServ.Text = "Ordem De Servico";
+            excluirOrdServ.UseVisualStyleBackColor = true;
+            excluirOrdServ.CheckedChanged += excluirOrdServ_CheckedChanged;
             // 
             // Pagina_Excluir
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(excluirOrdServ);
             Controls.Add(excluirItem);
             Controls.Add(excluirAmbiente);
             Controls.Add(excluirCategoria);
             Controls.Add(homeButton);
             Controls.Add(ConfirmarExcluir);
             Controls.Add(CancelExcluir);
-            Controls.Add(excluirOrdemDD);
             Controls.Add(excluirItemDD);
             Name = "Pagina_Excluir";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pagina_Excluir";
             ResumeLayout(false);
             PerformLayout();
@@ -135,12 +142,12 @@
 
         #endregion
         private ComboBox excluirItemDD;
-        private ComboBox excluirOrdemDD;
         private Button CancelExcluir;
         private Button ConfirmarExcluir;
         private Button homeButton;
         private RadioButton excluirCategoria;
         private RadioButton excluirAmbiente;
         private RadioButton excluirItem;
+        private RadioButton excluirOrdServ;
     }
 }

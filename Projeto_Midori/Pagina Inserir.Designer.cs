@@ -51,7 +51,6 @@
             inserirItemDD.Size = new Size(678, 23);
             inserirItemDD.TabIndex = 0;
             inserirItemDD.SelectedIndexChanged += inserirItemDD_SelectedIndexChanged;
-            
             // 
             // inserirAmbDD
             // 
@@ -211,6 +210,7 @@
             Controls.Add(inserirAmbDD);
             Controls.Add(inserirItemDD);
             Name = "Pagina_Inserir";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pagina_Inserir";
             ResumeLayout(false);
             PerformLayout();

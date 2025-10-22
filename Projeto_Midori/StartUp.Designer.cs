@@ -70,6 +70,7 @@
             Controls.Add(SelecPasta);
             Controls.Add(CaminhoPasta);
             Name = "CaminhoInic";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Selecione o caminho da pasta";
             ResumeLayout(false);
             PerformLayout();

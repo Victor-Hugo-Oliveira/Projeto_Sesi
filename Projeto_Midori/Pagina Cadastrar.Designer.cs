@@ -118,6 +118,7 @@
             Controls.Add(cadastroCancelar);
             Controls.Add(cadastroTextBox);
             Name = "Pagina_Cadastrar";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pagina_Cadastrar";
             Load += Pagina_Cadastrar_Load;
             ResumeLayout(false);
