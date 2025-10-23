@@ -68,7 +68,7 @@
             visualizarVoltar.Name = "visualizarVoltar";
             visualizarVoltar.Size = new Size(120, 32);
             visualizarVoltar.TabIndex = 4;
-            visualizarVoltar.Text = "Voltar";
+            visualizarVoltar.Text = "Excuir linha";
             visualizarVoltar.UseVisualStyleBackColor = true;
             // 
             // homeButton

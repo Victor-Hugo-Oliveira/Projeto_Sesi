@@ -57,21 +57,21 @@ namespace Projeto_Midori {
                 StreamWriter streamWriter = new StreamWriter(caminho + "\\Categoria.txt", true);
                 streamWriter.WriteLine(nomeCadastro);
                 streamWriter.Close();
-                MessageBox.Show($"Categoria: {nomeCadastro} cadastrado");
+                MessageBox.Show($"Categoria: \"{nomeCadastro}\" cadastrado");
             }
 
             if (cadastrarAmb.Checked) {
                 StreamWriter streamWriter = new StreamWriter(caminho + "\\Ambiente.txt", true);
                 streamWriter.WriteLine(nomeCadastro);
                 streamWriter.Close();
-                MessageBox.Show($"Ambiente: {nomeCadastro} cadastrado");
+                MessageBox.Show($"Ambiente: \"{nomeCadastro}\" cadastrado");
             }
 
             if (cadastrarOrdSer.Checked) {
                 StreamWriter streamWriter = new StreamWriter(caminho + "\\Ordem de Servico.txt", true);
                 streamWriter.WriteLine(nomeCadastro);
                 streamWriter.Close();
-                MessageBox.Show($"Ordem de Serivco: {nomeCadastro} cadastrado");
+                MessageBox.Show($"Ordem de Serivco: \"{nomeCadastro}\" cadastrado");
             }
 
 

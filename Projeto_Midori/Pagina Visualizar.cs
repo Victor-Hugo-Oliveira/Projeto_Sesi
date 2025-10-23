@@ -54,7 +54,7 @@ namespace Projeto_Midori {
                     data = streamReaderOrdSer.ReadLine();
                 }
             }
-            catch (FileNotFoundException ex) {
+            catch (FileNotFoundException ) {
 
                 MessageBox.Show("Ordem de Servico nao cadastrado");
 

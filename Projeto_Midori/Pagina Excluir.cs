@@ -122,7 +122,7 @@ namespace Projeto_Midori {
             // Escreve novamente o arquivo (sem o item)
             File.WriteAllLines(arquivo, novasLinhas);
 
-            MessageBox.Show($"Item \"{excludItem}\" removido de {itemSelec}.txt com sucesso!");
+            MessageBox.Show($"Item \"{excludItem}\" removido de {itemSelec} com sucesso!");
 
             excluirItemDD.Text = "";
         }
