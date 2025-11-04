@@ -22,7 +22,6 @@ namespace Projeto_Midori
             FolderBrowserDialog dialog = new FolderBrowserDialog();
             if (dialog.ShowDialog() == DialogResult.OK) {
                 CaminhoPasta.Text = dialog.SelectedPath;
-                
             }
 
             Caminho.Text = dialog.SelectedPath;
@@ -32,10 +31,14 @@ namespace Projeto_Midori
 
 
         private void Continuar1_Click(object sender, EventArgs e) {
-            FrontPage form2 = new FrontPage();
-            form2.FormClosed += (s, args) => this.Close(); // closes Form1 when Form2 closes
-            form2.Show();
-            this.Hide();
+            if (CaminhoPasta.Text.Length != 0) {
+                FrontPage form2 = new FrontPage();
+                form2.FormClosed += (s, args) => this.Close(); // closes Form1 when Form2 closes
+                form2.Show();
+                this.Hide();
+            } else {
+                MessageBox.Show("Selecione a pasta para gravar os arquivos");
+            }
         }
     }
 }

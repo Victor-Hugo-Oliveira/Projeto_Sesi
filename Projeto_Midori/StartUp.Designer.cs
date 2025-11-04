@@ -37,7 +37,6 @@
             // 
             CaminhoPasta.Location = new Point(111, 61);
             CaminhoPasta.Name = "CaminhoPasta";
-            CaminhoPasta.ReadOnly = true;
             CaminhoPasta.Size = new Size(609, 23);
             CaminhoPasta.TabIndex = 0;
             // 
